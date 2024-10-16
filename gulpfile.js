@@ -18,6 +18,12 @@ gulp.task('build-onepress-style-inline-css', () => {
     .pipe(cleanCss())
     .pipe(gulp.dest('css'));
 });
+gulp.task('build-wp-block-library-theme-inline-css', () => {
+    return gulp.src('non-minified/css/wp-block-library-theme-inline-css.css')
+    .pipe(concat('wp-block-library-theme-inline-css.min.css'))
+    .pipe(cleanCss())
+    .pipe(gulp.dest('css'));
+});
 
 // Concat and minify libraries JS files
 gulp.task('build-vendor-js', () => {
@@ -43,7 +49,7 @@ gulp.task('build-js', () => {
 
 // Start session
 gulp.task("session-start", (cb) => {
-    return gulp.series('build-onepress-style-css', 'build-onepress-style-inline-css', 'build-js')(cb);
+    return gulp.series('build-onepress-style-css', 'build-onepress-style-inline-css', 'build-wp-block-library-theme-inline-css', 'build-js')(cb);
 });
 
 // static server and watching CSS/JS/HTML files for changes
