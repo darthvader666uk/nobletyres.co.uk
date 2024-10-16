@@ -155,7 +155,7 @@ if (
                         b.$container.trigger(a.Event("backstretch.before", d), [b, c]),
                         (this.index = c),
                         clearInterval(b.interval),
-                        (b.$img = a("<img />")
+                        (b.$img = a("<img alt=\"NOBLE TYRES & EXHAUSTS. 1ST CHOICE CAR GARAGE FOR TYRES, EXHAUSTS, BRAKES, MOT AND SERVICING IN ABERDARE\"/>")
                             .css(s)
                             .bind("load", function (f) {
                                 var h = this.width || a(f.target).width();
