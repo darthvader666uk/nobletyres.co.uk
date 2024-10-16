@@ -6,9 +6,15 @@ const uglify = require('gulp-uglify');
 // const del = require('del');
 
 // Concat and minify CSS files
-gulp.task('build-css', () => {
-    return gulp.src('non-minified/css/*.css')
+gulp.task('build-onepress-style-css', () => {
+    return gulp.src('non-minified/css/onepress-style-css.css')
     .pipe(concat('onepress-style-css.min.css'))
+    .pipe(cleanCss())
+    .pipe(gulp.dest('css'));
+});
+gulp.task('build-onepress-style-inline-css', () => {
+    return gulp.src('non-minified/css/onepress-style-inline-css.css')
+    .pipe(concat('onepress-style-inline-css.min.css'))
     .pipe(cleanCss())
     .pipe(gulp.dest('css'));
 });
@@ -37,7 +43,7 @@ gulp.task('build-js', () => {
 
 // Start session
 gulp.task("session-start", (cb) => {
-    return gulp.series('build-css', 'build-js')(cb);
+    return gulp.series('build-onepress-style-css', 'build-onepress-style-inline-css', 'build-js')(cb);
 });
 
 // static server and watching CSS/JS/HTML files for changes
