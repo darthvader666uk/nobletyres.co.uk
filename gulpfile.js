@@ -8,7 +8,7 @@ const uglify = require('gulp-uglify');
 // Concat and minify CSS files
 gulp.task('build-css', () => {
     return gulp.src('non-minified/css/*.css')
-    .pipe(concat('style.min.css'))
+    .pipe(concat('style.css'))
     .pipe(cleanCss())
     .pipe(gulp.dest('css'));
 });
